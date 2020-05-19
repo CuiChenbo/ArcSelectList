@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.ccb.arcselect">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name="com.ccb.arcselect.ui.ArcSelectActivity"></activity>
+        <activity android:name="com.ccb.arcselect.ui.CircleArcActivity" />
+        <activity android:name="com.ccb.arcselect.ui.AutoSelectActivity" />
+        <activity android:name="com.ccb.arcselect.ui.ArcSelectRotateActivity" />
+        <activity android:name="com.ccb.arcselect.ui.ArcActivity" />
+        <activity android:name="com.ccb.arcselect.ui.PadingArcActivity" />
+        <activity android:name="com.ccb.arcselect.StartActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

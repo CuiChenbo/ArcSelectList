@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipChildren="false"
+    tools:context=".ui.ArcSelectRotateActivity">
+    <ImageView
+        android:layout_width="400dp"
+        android:src="@mipmap/ic_launcher_round"
+        android:id="@+id/iv"
+        android:layout_centerVertical="true"
+        android:layout_height="400dp"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_marginLeft="108dp"
+        android:layout_height="match_parent"
+        android:id="@+id/rv" />
+    
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_centerVertical="true"
+        android:layout_height="40dp">
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#66dd66"
+            />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#66dd66"
+            android:layout_alignParentBottom="true"
+            />
+    </RelativeLayout>
+
+
+
+</RelativeLayout>
