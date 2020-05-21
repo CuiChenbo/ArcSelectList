@@ -210,7 +210,7 @@ public class AutoSelectActivity extends AppCompatActivity {
             vh.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-//                        startActivity(new Intent(ArcSelectRotateActivity.this , WheelAct.class));
+                    scrollToCenter(fp);
                     Toast.makeText(AutoSelectActivity.this, "点击" + mDatas.get(fp), Toast.LENGTH_SHORT).show();
                 }
             });

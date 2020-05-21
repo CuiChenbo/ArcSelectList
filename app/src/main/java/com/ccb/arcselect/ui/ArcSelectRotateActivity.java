@@ -137,7 +137,7 @@ public class ArcSelectRotateActivity extends AppCompatActivity {
                 }
                 Log.i("ccb", "onScrolled: dx"+dx +"  ,dy"+dy);
                 float dyy = dy*-1;
-                setRotate(dyy/4);
+                setRotate(iv,dyy/4);
             }
         });
 
@@ -161,9 +161,9 @@ public class ArcSelectRotateActivity extends AppCompatActivity {
     private float values = 0f;
     private float newValues = 0f;
     private ObjectAnimator rotationAnimator;
-    public void setRotate(float dy) {
+    public void setRotate(View view , float dy) {
         if (rotationAnimator == null)
-            rotationAnimator = ObjectAnimator.ofFloat(iv,"rotation",0f,10f);
+            rotationAnimator = ObjectAnimator.ofFloat(view,"rotation",0f,10f);
         newValues = values + dy;
         rotationAnimator.setDuration(10L);
         rotationAnimator.setFloatValues(values,newValues);
