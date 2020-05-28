@@ -1,10 +1,5 @@
 package com.ccb.arcselect.ui;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
@@ -17,30 +12,35 @@ import android.widget.AbsListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.ccb.arcselect.R;
 import com.ccb.arcselect.utils.TUtils;
 import com.ccb.arcselect.utils.UiUtils;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 
 /**
- * 滑动后自动选中居中的条目  类似 WheelView
+ * 横向滑动后自动选中居中的条目  类似 横向WheelView
  */
-public class AutoSelectActivity extends AppCompatActivity {
+public class HorizontalSelectActivity extends AppCompatActivity {
 
-private TextView tv;
+private final int CHILDVIEWSIZE = 100;
     private RecyclerView recyclerView;
+    private TextView tv;
     private MAdapter mAdapter;
-    private int centerToTopDistance; //RecyclerView高度的一半 ,也就是控件中间位置到顶部的距离 ，
+    private int centerToLiftDistance; //RecyclerView款度的一半 ,也就是控件中间位置到左部的距离 ，
     private int childViewHalfCount = 0; //当前RecyclerView一半最多可以存在几个Item
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_auto_select);
+        setContentView(R.layout.activity_auto_select_h);
         recyclerView = findViewById(R.id.rv);
         tv = findViewById(R.id.tv);
         init();
@@ -48,7 +48,7 @@ private TextView tv;
     }
 
     private void init() {
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setLayoutManager(new LinearLayoutManager(this , LinearLayoutManager.HORIZONTAL , false));
         recyclerView.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
             @Override
             public void onGlobalLayout() {
@@ -56,10 +56,10 @@ private TextView tv;
                     recyclerView.getViewTreeObserver().removeOnGlobalLayoutListener(this);
                 }
 
-                centerToTopDistance = recyclerView.getHeight() / 2;
+                centerToLiftDistance = recyclerView.getWidth() / 2;
 
-                int childViewHeight = UiUtils.dip2px(AutoSelectActivity.this, 43); //43是当前已知的 Item的高度
-                childViewHalfCount = (recyclerView.getHeight() / childViewHeight + 1) / 2;
+                int childViewHeight = UiUtils.dip2px(HorizontalSelectActivity.this, CHILDVIEWSIZE); //43是当前已知的 Item的高度
+                childViewHalfCount = (recyclerView.getWidth() / childViewHeight + 1) / 2;
                 initData();
                 findView();
 
@@ -78,7 +78,7 @@ private TextView tv;
     private void initData() {
         if (mDatas == null) mDatas = new ArrayList<>();
         for (int i = 0; i < 55; i++) {
-            mDatas.add("竖向条目" + i);
+            mDatas.add("条目" + i);
         }
         for (int j = 0; j < childViewHalfCount; j++) { //头部的空布局
             mDatas.add(0, "");
@@ -116,8 +116,8 @@ private TextView tv;
                         if (centerChildViewPosition != 0){
                             for (int i = centerChildViewPosition -1 ; i < centerChildViewPosition+2; i++) {
                                 View cView = recyclerView.getLayoutManager().findViewByPosition(i);
-                                int viewTop = cView.getTop()+(cView.getHeight()/2);
-                                centerViewItems.add(new CenterViewItem(i ,Math.abs(centerToTopDistance - viewTop)));
+                                int viewLeft = cView.getLeft()+(cView.getWidth()/2);
+                                centerViewItems.add(new CenterViewItem(i ,Math.abs(centerToLiftDistance - viewLeft)));
                             }
 
                            CenterViewItem centerViewItem = getMinDifferItem(centerViewItems);
@@ -125,22 +125,6 @@ private TextView tv;
                         }
 
                         scrollToCenter(centerChildViewPosition);
-//                        centerChildViewPosition = centerChildViewPosition < childViewHalfCount ? childViewHalfCount : centerChildViewPosition;
-//                        centerChildViewPosition = centerChildViewPosition <= mAdapter.getItemCount() - childViewHalfCount -1 ? centerChildViewPosition : mAdapter.getItemCount() - childViewHalfCount -1;
-//                        View childView = recyclerView.getLayoutManager().findViewByPosition(centerChildViewPosition);
-//                        Log.i("ccb", "滑动后中间View的索引: " + centerChildViewPosition);
-//
-//                        //把当前View移动到居中位置
-//                        if (childView == null) return;
-//                        int childVhalf = childView.getHeight() / 2;
-//                        int childViewTop = childView.getTop();
-//                        int viewCTop = centerToTopDistance;
-//                        int smoothDistance = childViewTop - viewCTop + childVhalf;
-//                        Log.i("ccb", "居中位置距离顶部距离: " + viewCTop + "当前居中控件距离顶部距离: " + childViewTop);
-//                        Log.i("ccb", "滑动后再次移动距离: " + smoothDistance);
-//                        recyclerView.smoothScrollBy(0, smoothDistance);
-//                        Toast.makeText(AutoSelectActivity.this, "滑动后选中:" + mDatas.get(centerChildViewPosition), Toast.LENGTH_SHORT).show();
-//                        mAdapter.setSelectPosition(centerChildViewPosition);
                     }
                 }
             }
@@ -176,15 +160,15 @@ private TextView tv;
         Log.i("ccb", "滑动后中间View的索引: " + position);
         //把当前View移动到居中位置
         if (childView == null) return;
-        int childVhalf = childView.getHeight() / 2;
-        int childViewTop = childView.getTop();
-        int viewCTop = centerToTopDistance;
-        int smoothDistance = childViewTop - viewCTop + childVhalf;
-        Log.i("ccb", "\n居中位置距离顶部距离: " + viewCTop
-                + "\n当前居中控件距离顶部距离: " + childViewTop
+        int childVhalf = childView.getWidth() / 2;
+        int childViewLeft = childView.getLeft();
+        int viewCTop = centerToLiftDistance;
+        int smoothDistance = childViewLeft - viewCTop + childVhalf;
+        Log.i("ccb", "\n居中位置距离左部距离: " + viewCTop
+                + "\n当前居中控件距离左部距离: " + childViewLeft
                 + "\n当前居中控件的一半高度: " + childVhalf
                 + "\n滑动后再次移动距离: " + smoothDistance);
-        recyclerView.smoothScrollBy(0, smoothDistance,null,500);
+        recyclerView.smoothScrollBy(smoothDistance, 0,null,500);
         mAdapter.setSelectPosition(position);
 
         tv.setText("当前选中:" + mDatas.get(position));
@@ -195,7 +179,7 @@ private TextView tv;
         @NonNull
         @Override
         public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-            return new VH(LayoutInflater.from(AutoSelectActivity.this).inflate(R.layout.item_auto_select, parent, false));
+            return new VH(LayoutInflater.from(HorizontalSelectActivity.this).inflate(R.layout.item_auto_select_h, parent, false));
         }
 
         @Override
@@ -213,7 +197,7 @@ private TextView tv;
                 @Override
                 public void onClick(View v) {
                     scrollToCenter(fp);
-                    Toast.makeText(AutoSelectActivity.this, "点击" + mDatas.get(fp), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(HorizontalSelectActivity.this, "点击" + mDatas.get(fp), Toast.LENGTH_SHORT).show();
                 }
             });
         }

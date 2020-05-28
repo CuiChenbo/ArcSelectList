@@ -10,6 +10,7 @@ import com.ccb.arcselect.ui.ArcActivity;
 import com.ccb.arcselect.ui.ArcSelectRotateActivity;
 import com.ccb.arcselect.ui.AutoSelectActivity;
 import com.ccb.arcselect.ui.CircleArcActivity;
+import com.ccb.arcselect.ui.HorizontalSelectActivity;
 import com.ccb.arcselect.ui.PadingArcActivity;
 import com.ccb.arcselect.ui.ArcSelectActivity;
 
@@ -25,11 +26,12 @@ public class StartActivity extends AppCompatActivity implements View.OnClickList
         findViewById(R.id.bt_auto_select).setOnClickListener(this);
         findViewById(R.id.bt_carc).setOnClickListener(this);
         findViewById(R.id.bt_arc_select_).setOnClickListener(this);
+        findViewById(R.id.bt_auto_select_h).setOnClickListener(this);
     }
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.bt_arc_select_r:
                 start(ArcSelectRotateActivity.class);
                 break;
@@ -48,10 +50,13 @@ public class StartActivity extends AppCompatActivity implements View.OnClickList
             case R.id.bt_arc_select_:
                 start(ArcSelectActivity.class);
                 break;
+            case R.id.bt_auto_select_h:
+                start(HorizontalSelectActivity.class);
+                break;
         }
     }
 
-    private void start(Class clazz){
-        startActivity(new Intent(this , clazz));
+    private void start(Class clazz) {
+        startActivity(new Intent(this, clazz));
     }
 }

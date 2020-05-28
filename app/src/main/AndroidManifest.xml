@@ -12,6 +12,7 @@
         <activity android:name="com.ccb.arcselect.ui.ArcSelectActivity"></activity>
         <activity android:name="com.ccb.arcselect.ui.CircleArcActivity" />
         <activity android:name="com.ccb.arcselect.ui.AutoSelectActivity" />
+        <activity android:name="com.ccb.arcselect.ui.HorizontalSelectActivity" />
         <activity android:name="com.ccb.arcselect.ui.ArcSelectRotateActivity" />
         <activity android:name="com.ccb.arcselect.ui.ArcActivity" />
         <activity android:name="com.ccb.arcselect.ui.PadingArcActivity" />

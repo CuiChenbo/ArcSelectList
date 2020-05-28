@@ -6,26 +6,45 @@
     android:layout_height="match_parent"
     tools:context=".ui.AutoSelectActivity">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/rv" />
 
     <RelativeLayout
+        android:id="@+id/rl"
+        android:layout_alignParentBottom="true"
         android:layout_width="match_parent"
-        android:layout_centerVertical="true"
-        android:layout_height="40dp">
-        <View
+        android:layout_height="300dp">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv"
             android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#66dd66"
-            />
-        <View
+            android:layout_height="match_parent" />
+
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#66dd66"
-            android:layout_alignParentBottom="true"
-            />
+            android:layout_height="40dp"
+            android:layout_centerVertical="true">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#66dd66" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_alignParentBottom="true"
+                android:background="#66dd66" />
+        </RelativeLayout>
     </RelativeLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        tools:text="@string/app_name"
+        android:textSize="20dp"
+        android:id="@+id/tv"
+        android:layout_above="@id/rl"
+        android:layout_marginBottom="20dp"
+        />
 
 </RelativeLayout>
