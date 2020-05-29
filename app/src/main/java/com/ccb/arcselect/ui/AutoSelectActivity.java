@@ -13,6 +13,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
+import android.view.animation.DecelerateInterpolator;
 import android.widget.AbsListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -164,6 +165,7 @@ private TextView tv;
         });
     }
 
+    private DecelerateInterpolator decelerateInterpolator = new DecelerateInterpolator();
     /**
      * 移动指定索引到中心处 ， 只可以移动可见区域的内容
      * @param position
@@ -185,7 +187,7 @@ private TextView tv;
                 + "\n当前居中控件距离顶部距离: " + childViewTop
                 + "\n当前居中控件的一半高度: " + childVhalf
                 + "\n滑动后再次移动距离: " + smoothDistance);
-        recyclerView.smoothScrollBy(0, smoothDistance,null,500);
+        recyclerView.smoothScrollBy(0, smoothDistance,decelerateInterpolator);
         mAdapter.setSelectPosition(position);
 
         tv.setText("当前选中:" + mDatas.get(position));
