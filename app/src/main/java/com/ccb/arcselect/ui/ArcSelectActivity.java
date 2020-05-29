@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Build;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -192,9 +193,14 @@ public class ArcSelectActivity extends AppCompatActivity {
             if (selectPosition == position) {
                 vh.tv.setTextColor(getResources().getColor(R.color.textSelect));
             } else {
-                vh.tv.setTextColor(getResources().getColor(R.color.colorText));
+                vh.tv.setTextColor(getResources().getColor(R.color.white));
             }
-            vh.tv.setText(mDatas.get(position));
+            if (TextUtils.isEmpty(mDatas.get(position))){
+                vh.itemView.setVisibility(View.INVISIBLE);
+            }else {
+                vh.itemView.setVisibility(View.VISIBLE);
+                vh.tv.setText(mDatas.get(position));
+            }
             final int fp = position;
             vh.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override

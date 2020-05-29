@@ -13,11 +13,10 @@
             android:layout_height="wrap_content"
             tools:text="你好"
             android:id="@+id/tv"
-            android:paddingStart="110dp"
-            android:paddingEnd="0dp"
+            android:layout_marginLeft="110dp"
             android:textColor="#222"
-            android:textSize="22sp"
-            android:textStyle="bold"
+            android:textSize="18sp"
+            android:background="@drawable/text_background"
             />
     </RelativeLayout>
 

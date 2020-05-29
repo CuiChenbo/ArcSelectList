@@ -9,9 +9,8 @@
         android:text="你好"
         android:layout_centerVertical="true"
         android:id="@+id/tv"
-        android:textColor="#222"
-        android:textSize="22dp"
-        android:textStyle="bold"
+        android:textColor="#fff"
+        android:textSize="18dp"
         android:background="@drawable/text_background"
         />
 
