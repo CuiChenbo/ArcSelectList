@@ -6,22 +6,44 @@
     android:layout_height="match_parent"
     android:clipChildren="false"
     tools:context=".ui.ArcSelectRotateActivity">
-    <ImageView
-        android:layout_width="400dp"
-        android:src="@mipmap/ic_launcher_round"
-        android:id="@+id/iv"
+    <RelativeLayout
+        android:id="@+id/rvDish"
         android:layout_centerVertical="true"
-        android:layout_height="400dp"/>
+        android:layout_width="400dp"
+        android:layout_height="400dp">
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@mipmap/ebooks_disk_background"
+            android:id="@+id/ivDish"
+            />
+        <ImageView
+            android:layout_width="124dp"
+            android:layout_height="118dp"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/ebooks_disk_check"
+            android:layout_alignParentRight="true"
+            />
+
+        <ImageView
+            android:id="@+id/ivScale"
+            android:layout_centerInParent="true"
+            android:layout_width="350dp"
+            android:layout_height="350dp"
+            android:src="@mipmap/ebooks_disk_scale_white"
+            />
+    </RelativeLayout>
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv"
         android:layout_width="match_parent"
-        android:layout_marginLeft="108dp"
         android:layout_height="match_parent"
-        android:id="@+id/rv" />
+        android:layout_marginLeft="108dp" />
     
 
 
     <RelativeLayout
+        android:visibility="invisible"
         android:layout_width="match_parent"
         android:layout_centerVertical="true"
         android:layout_height="40dp">

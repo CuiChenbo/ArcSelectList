@@ -17,6 +17,7 @@ import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.widget.AbsListView;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.ccb.arcselect.R;
@@ -34,7 +35,8 @@ import java.util.List;
  */
 public class ArcSelectRotateActivity extends AppCompatActivity {
 
- private ImageView iv;
+ private RelativeLayout rvDish;
+ private ImageView ivScale;
     private RecyclerView recyclerView;
     private MAdapter mAdapter;
     private int centerToTopDistance; //RecyclerView高度的一半 ,也就是控件中间位置到顶部的距离 ，
@@ -45,8 +47,9 @@ public class ArcSelectRotateActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_arc_select_r);
         recyclerView = findViewById(R.id.rv);
-        iv = findViewById(R.id.iv);
-        setTranslationX(iv , UiUtils.dip2px(this , 200)*-1);
+        rvDish = findViewById(R.id.rvDish);
+        ivScale = findViewById(R.id.ivScale);
+        setTranslationX(rvDish , UiUtils.dip2px(this , 200)*-1);
         init();
 
     }
@@ -139,7 +142,7 @@ public class ArcSelectRotateActivity extends AppCompatActivity {
                 }
                 Log.i("ccb", "onScrolled: dx"+dx +"  ,dy"+dy);
                 float dyy = dy*-1;
-                setRotate(iv,dyy/4);
+                setRotate(ivScale,dyy/4);
             }
         });
 

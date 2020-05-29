@@ -13,7 +13,7 @@
             android:layout_height="wrap_content"
             tools:text="你好"
             android:id="@+id/tv"
-            android:layout_marginLeft="110dp"
+            android:layout_marginLeft="125dp"
             android:textColor="#222"
             android:textSize="18sp"
             android:background="@drawable/text_background"
