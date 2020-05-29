@@ -79,10 +79,10 @@ public class ArcSelectRotateActivity extends AppCompatActivity {
             mDatas.add("CAR_Item" + i);
         }
         for (int j = 0; j < childViewHalfCount; j++) { //头部的空布局
-            mDatas.add(0, "");
+            mDatas.add(0, null);
         }
         for (int k = 0; k < childViewHalfCount; k++) {  //尾部的空布局
-            mDatas.add("");
+            mDatas.add(null);
         }
 
 
