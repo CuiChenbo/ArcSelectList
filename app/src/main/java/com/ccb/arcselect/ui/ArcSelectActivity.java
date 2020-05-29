@@ -19,6 +19,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.ccb.arcselect.R;
+import com.ccb.arcselect.utils.CenterItemUtils;
 import com.ccb.arcselect.utils.TUtils;
 import com.ccb.arcselect.utils.UiUtils;
 import com.ccb.arcselect.view.MatrixTranslateLayout;
@@ -28,6 +29,7 @@ import java.util.List;
 
 /**
  * 矩阵实现弧形列表  &&   滑动后自动选中居中的条目
+ * 未使用精确计算居中
  */
 public class ArcSelectActivity extends AppCompatActivity {
 
@@ -86,6 +88,7 @@ public class ArcSelectActivity extends AppCompatActivity {
     }
 
     private boolean isTouch = false; //用户主动触摸后的标记
+    private List<CenterItemUtils.CenterViewItem> centerViewItems = new ArrayList<>();
 
     private void findView() {
         mAdapter = new MAdapter();
@@ -106,8 +109,18 @@ public class ArcSelectActivity extends AppCompatActivity {
                         int centerPositionDiffer = (la - fi) / 2;
                         int centerChildViewPosition = fi + centerPositionDiffer;
 
-                        centerChildViewPosition = centerChildViewPosition < childViewHalfCount ? childViewHalfCount : centerChildViewPosition;
-                        centerChildViewPosition = centerChildViewPosition < mAdapter.getItemCount() - childViewHalfCount -1 ? centerChildViewPosition : mAdapter.getItemCount() - childViewHalfCount -1;
+                        centerViewItems.clear();
+                        //遍历循环，获取到和中线相差最小的条目索引(精准查找最居中的条目)
+                        if (centerChildViewPosition != 0){
+                            for (int i = centerChildViewPosition -1 ; i < centerChildViewPosition+2; i++) {
+                                View cView = recyclerView.getLayoutManager().findViewByPosition(i);
+                                int viewTop = cView.getTop()+(cView.getHeight()/2);
+                                centerViewItems.add(new CenterItemUtils.CenterViewItem(i ,Math.abs(centerToTopDistance - viewTop)));
+                            }
+
+                            CenterItemUtils.CenterViewItem centerViewItem = CenterItemUtils.getMinDifferItem(centerViewItems);
+                            centerChildViewPosition = centerViewItem.position;
+                        }
                         scrollToCenter(centerChildViewPosition);
                     }
                 }

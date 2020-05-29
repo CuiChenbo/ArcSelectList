@@ -30,6 +30,7 @@ import java.util.List;
 
 /**
  * 矩阵实现弧形列表  &&   滑动后自动选中居中的条目   &&  图片跟随旋转
+ * 未使用精确计算居中条目 ， 可以参考CenterItemUtils类 ， 或其它选中居中的界面的实现
  */
 public class ArcSelectRotateActivity extends AppCompatActivity {
 
