@@ -1,5 +1,5 @@
 # ArcSelectList
-弧形列表、滑动后自动选中
+弧形列表、滑动后自动选中 ， 使用RecyclerView实现； 横向选择器、竖向选择器 、 圆弧形选择器；
 > 下载地址：http://d.7short.com/ArcSelectList
 - [Android 弧形列表转盘的实现（一），弧形列表](https://blog.csdn.net/qq_35605213/article/details/106194839)
 - [Android 弧形列表转盘的实现（二），列表自动选中；RecyclerView滑动后自动选中居中的条目，RecyclerView实现WheelView效果](https://blog.csdn.net/qq_35605213/article/details/106209700)
