@@ -9,6 +9,7 @@ import android.view.View;
 import com.ccb.arcselect.ui.ArcActivity;
 import com.ccb.arcselect.ui.ArcSelectRotateActivity;
 import com.ccb.arcselect.ui.AutoSelectActivity;
+import com.ccb.arcselect.ui.BottomArcActivity;
 import com.ccb.arcselect.ui.CircleArcActivity;
 import com.ccb.arcselect.ui.HorizontalSelectActivity;
 import com.ccb.arcselect.ui.PadingArcActivity;
@@ -27,6 +28,7 @@ public class StartActivity extends AppCompatActivity implements View.OnClickList
         findViewById(R.id.bt_carc).setOnClickListener(this);
         findViewById(R.id.bt_arc_select_).setOnClickListener(this);
         findViewById(R.id.bt_auto_select_h).setOnClickListener(this);
+        findViewById(R.id.bt_auto_select_h2).setOnClickListener(this);
     }
 
     @Override
@@ -52,6 +54,9 @@ public class StartActivity extends AppCompatActivity implements View.OnClickList
                 break;
             case R.id.bt_auto_select_h:
                 start(HorizontalSelectActivity.class);
+                break;
+                case R.id.bt_auto_select_h2:
+                start(BottomArcActivity.class);
                 break;
         }
     }

@@ -65,7 +65,16 @@
             android:text="横向自动选中"
             android:layout_height="wrap_content" />
 
-    <Button
+        <Button
+            android:id="@+id/bt_auto_select_h2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="60dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="60dp"
+            android:text="横向弧形自动选中" />
+
+        <Button
         android:id="@+id/bt_carc"
         android:layout_width="match_parent"
         android:layout_marginTop="20dp"

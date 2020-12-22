@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.ccb.arcselect.view.HMatrixTranslateLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="180dp"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.ccb.arcselect.view.CircleRelativeLayout
+        android:layout_width="150dp"
+        app:background_color="#fd4545"
+        android:layout_height="150dp">
+
+        <TextView
+            android:id="@+id/tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#fff"
+            android:layout_centerInParent="true"
+            android:textSize="17sp"
+            android:text="CC" />
+    </com.ccb.arcselect.view.CircleRelativeLayout>
+
+
+</com.ccb.arcselect.view.HMatrixTranslateLayout>

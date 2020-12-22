@@ -16,6 +16,7 @@
         <activity android:name="com.ccb.arcselect.ui.ArcSelectRotateActivity" />
         <activity android:name="com.ccb.arcselect.ui.ArcActivity" />
         <activity android:name="com.ccb.arcselect.ui.PadingArcActivity" />
+        <activity android:name="com.ccb.arcselect.ui.BottomArcActivity" />
         <activity android:name="com.ccb.arcselect.StartActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

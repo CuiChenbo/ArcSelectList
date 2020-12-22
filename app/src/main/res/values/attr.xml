@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="CircleRelativeLayoutLayout">
+        <attr name="background_color" format="color" />
+        <attr name="background_alpha" format="integer" />
+    </declare-styleable>
+</resources>
